@@ -1,0 +1,56 @@
+﻿
+
+<h2>Card Game</h2>
+
+<form action="/Home/DrawCards">
+    <table class="table">
+        <tr>
+
+            @*@if (ViewBag.Keep != null)
+            {
+                foreach (var item in ViewBag.Keep)
+                {
+                    <td>
+                        <input type="checkbox" name="data" value="@item" /> Keep?
+                    </td>
+                }
+            }*@
+            @for (int i = 0; i < 5; i++)
+            {
+                <td>
+                    <input type="checkbox" name="data" value="@ViewBag.Indexes[i]" /> Keep?
+                </td>
+                //if (i == 4)
+                //{
+                //    i = ViewBag.Count;
+                //}
+            }
+        </tr>
+        <tr>
+            @if (ViewBag.Keep != null)
+            {
+                foreach (var item in ViewBag.Keep)
+                {
+                    <td>
+                        <img src="@item" height="200" width="140" />
+                    </td>
+                }
+            }
+            @for (int i = 0; i < ViewBag.Count; i++)
+            {
+                <td>
+                    <img src="@ViewBag.Deck[i].CardImage" height="200" width="140" />
+                </td>
+                if (i == 4)
+                {
+                    i = ViewBag.Count;
+                }
+            }
+        </tr>
+    </table>
+    
+    <input type="submit" value="DrawCards" />
+</form>
+
+
+
