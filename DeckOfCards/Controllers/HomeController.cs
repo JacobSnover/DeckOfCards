@@ -43,7 +43,8 @@ namespace DeckOfCards.Controllers
 
             StreamReader sr = new StreamReader(Response.GetResponseStream());
 
-            JObject JsonData = JObject.Parse(sr.ReadToEnd());
+            string d = sr.ReadToEnd();
+            JObject JsonData = JObject.Parse(d);
 
             Session["deckID"] = JsonData["deck_id"];
 
@@ -64,7 +65,9 @@ namespace DeckOfCards.Controllers
             Response = (HttpWebResponse)data.GetResponse();
             StreamReader sr = new StreamReader(Response.GetResponseStream());
 
-            JObject JsonData = JObject.Parse(sr.ReadToEnd());
+            string d = sr.ReadToEnd();
+
+            JObject JsonData = JObject.Parse(d);
             ViewBag.Remain = JsonData;
             ViewBag.Cards = JsonData["cards"];
 
